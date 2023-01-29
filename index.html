@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>BMI</title>
+    <style>
+       .container{
+        border: 2px solid red;
+        width: 1000px;
+        height: 500px;
+        padding: 0px;
+        border-radius: 8px;
+        margin: 20px;
+       }
+       p{
+        letter-spacing: 0.2px;
+       }
+       .box{
+        display: grid;
+        grid-template-columns: 5fr 4fr;
+        padding: 5px;
+       }
+    
+     .header span{
+        font-size: 16px;
+        background-color: rgb(29, 29, 128);
+        color: white;
+        border-right: 2px solid white;
+        border-radius: 3px;
+        padding: 5px;
+     
+      
+     }
+     #metric{
+      padding-bottom: 14.5px;
+      border-bottom: none;
+      background-color:grey;
+      border-radius: 1px;
+      border-right: none;
+     }
+     .body{
+        background-color: gray;
+        margin-top: 10px;
+        padding: 5px;
+        height: 300px;
+     }
+      .height input{
+        width: 190px;
+        height: 30px;
+      }  
+      label{
+        padding-right: 50px;
+        padding-left: 20px;
+        font-size: 17px;
+      }
+   .height   input::placeholder{
+        float: right;
+        font-size: 14px;
+      } 
+      .footer button{
+        height: 46px;
+    width: 162px;
+    margin-left: 39px;
+    margin-top: 10px;
+      }
+      .red{
+        background-color: red;
+      
+        box-shadow: 2px 2px 6px gray;
+      }
+      .green{
+        background-color: green;
+        
+        box-shadow: 2px 2px 6px rebeccapurple;
+      }
+      .blue{
+        background-color: blue;
+      
+        box-shadow: 2px 2px 6px royalblue;
+      }
+      .yellow{
+        background-color: rgb(134, 134, 21);
+       
+        box-shadow: 2px 2px 6px yellowgreen;
+      }
+      .darkred{
+        background-color: darkred;
+     
+        box-shadow: 2px 2px 6px white;
+      }
+      .red,.green,.blue,.yellow, .darkred{
+        width: 60px;
+        height: 35px;
+        border-radius: 3px;
+        text-align: center;
+        color: white;
+        padding: 5px;
+        margin-top: 30px;
+        font-size: 18px;
+      }
+      .box-2{
+        margin-top: 35px;
+        padding: 10px;
+      }
+    </style>
+    <script>
+         function BmiClick(){
+          var height = parseInt(document.getElementById("txtHeight").value);
+          var weight = parseInt(document.getElementById("txtWeight").value);
+          var bmi = weight/(height / 100 * height / 100);
+        document.getElementById("result").innerHTML = `BMI Result : ${bmi.toFixed(1)}`;
+        
+         var status=document.getElementById("status");
+         if(bmi>0 && bmi<18.5){
+                status.innerHTML="Under Weight".fontcolor("white");
+                status.className="red";
+                }else if(bmi>18.5 && bmi<24.9){
+                    status.innerHTML="Normal Weight".fontcolor("white");
+                    status.className="green";
+                    
+                }else if(bmi>24.5 && bmi<29.9){
+                    status.innerHTML="Over Weight".fontcolor("white");
+                    status.className="yellow";
+                }else if(bmi>30 && bmi<34.9){
+                    status.innerHTML="Obses Weight".fontcolor("white");
+                    status.className="blue";
+                }
+                    else if(bmi>35){
+                    status.innerHTML="Extremly Obses Weight".fontcolor("whitesmoke");
+                    status.className="darkred";
+               }
+         }
+         function BmiClear() {
+            parseInt(document.getElementById("txtAge").value = "");
+            parseInt(document.getElementById("txtHeight").value = "");
+            parseInt(document.getElementById("txtWeight").value = "");
+            document.getElementById("clear").innerHTML = `Cleared : `;
+            clear.innerHTML = "";
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <div class="container ">
+        <p class="bg-dark text-white p-2 mt-0 mb-1 text-center rounded-4"><span class="bi bi-caret-down-square-fill rounded rounded-3 me-1"></span>Modify the Value and Click the Calculate Button to use </p>
+        <div class="box">
+           <div class="box-1">
+             <div class="header">
+                <span id="metric">Metric Units</span>
+             </div>
+             <div class="body">
+                <div class="input-group d-flex jusyify-content-between">
+                    <label for="age" style="font-size: 14px;" class="input-group-text mt-2">Age</label>
+                    <input type="text" size="2" id="txtAge" class="form-control" style="height: 40px; width: 60px; margin-top: 10px;" placeholder="Ages - 2- 120" >
+                </div>
+                <div class="d-flex jusyify-content-between mt-3 text-white">
+                    <label for="Gender" class="me-2 text-dark">Gender</label>
+                    <input type="radio" id="txtMale" class="form-check-input me-2" name="Gender" value="Male"> <Span class="me-2 ">Male</Span>
+                    <input type="radio" id="txtFemale" class="form-check-input me-2"  name="Gender" value="Female"> <Span>Female</Span>
+                </div>
+                <div class="height">
+                <div class="d-flex mt-3">
+                <label for="height"> Height :</label>
+                <input type="text" id="txtHeight"  name="height" placeholder="cm">
+                </div>
+
+                <div class="d-flex mt-3"> 
+                <label for="Weight" > Weight :</label>
+                <input type="text" id="txtWeight" name="weight" placeholder="kg">
+                </div>
+            </div>
+                <div class="footer mt-2 text-center ">
+                    <button class="btn btn-success me-3" onclick="BmiClick()">Calculate <span class="bi bi-caret-right-square-fill"></span></button>
+                    <button class="btn btn-secondary " onclick="BmiClear()">Clear</button>
+                </div>
+                    
+
+             </div>
+           </div>
+           <div class="box-2">
+            <div class="result mb-4">
+              <span style="color:black; background-color: wheat; font-family: cursive; padding: 5px; border-radius: 5px; margin-right: 80px;">Your BMI : </span><span id="result" class="bg-success text-white"></span>
+            </div>
+            <div class="mt-2 mb-4">
+              <span style="color: White; background-color: darkgoldenrod; padding: 5px; border-radius: 5px; margin-right: 80px;">Your Weight Status : </span><span id="status"></span>
+            </div>
+           <div class="p-1 ms-2 mb-2" >
+              <span class="me-1  red">Under Weight</span>
+              <span  class=" green">Normal Weight</span>
+              <span  class="me-2 yellow">OverWeight</span>
+              <div class="mt-4 ">
+                  <span  class="me-2 blue">Obses Weight</span>
+                  <span  class="me-2 darkred">Extremly Obses Weight</span>
+             </div>
+         </div>
+          
+        </div>
+    </div>
+   
+</body>
+</html>
